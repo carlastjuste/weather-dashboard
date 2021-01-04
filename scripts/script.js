@@ -90,7 +90,7 @@ function displayWeatherInfo(searchParm, apiKey){
           //var CurrentDateUsF =  CurrentDate.toLocaleDateString("en-US");
 
           currentWeatherHtml = "<h1>" + cityName + " (" + currentDate + ")</h1><img src='"+ currentWeatherIconUrl + "' alt='" + currentWeatherIconDesc + "'>";
-          currentWeatherHtml += "<ul><li>Temperature: " + currentTemperature + "&#176" + unitTemp +"</li>";
+          currentWeatherHtml += "<ul><li>Temperature: " + currentTemperature + " &#176" + unitTemp +"</li>";
           currentWeatherHtml += "<li>Humidity: " + currentHumidity + "</li>";
           currentWeatherHtml += "<li>Wind Speed: " + currentWindSpeed + "</li>";
           currentWeatherHtml += "<li>UV Index: "+ currentUVI + "</li></ul>";
@@ -121,7 +121,7 @@ function displayWeatherInfo(searchParm, apiKey){
           for(i=0; i<5; i++) {
             forecastHtml += "<li><h3>" + forecast[i].Date + "</h3>";
             forecastHtml += "<img src='"+ forecast[i].iconUrl + "' alt='" + forecast[i].iconDesc + "'>";
-            forecastHtml +=  "<p>Temp: " + forecast[i].temperature + "&#176" + unitTemp + "</p><br/><p>Humidity: " + forecast[i].humidity + "%</p>";
+            forecastHtml +=  "<p>Temp: " + forecast[i].temperature + " &#176" + unitTemp + "</p><br/><p>Humidity: " + forecast[i].humidity + "%</p>";
             //console.log(forecastHtml)
 
           }

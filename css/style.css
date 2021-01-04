@@ -11,7 +11,7 @@ body {
 
 header {
     background :#353839;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     color:#FFFFFF;
     font-size: x-large;
@@ -54,7 +54,7 @@ ul{
 
 #current-weather-display ul{
     clear:both;
-    margin: 45px
+    margin: 45px 0px 0px 45px;
 }
 
 #current-weather-display ul li{
@@ -76,6 +76,7 @@ ul{
 
 #forecast ul li {
     background-color:cornflowerblue;
+    padding: 20px;
     border: 1px solid #c0c0c0;
     border-radius: 5px;
 }
