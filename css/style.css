@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+body {
+    background-color: #FFFFFF;
+  }
+
+header {
+    background :#353839;
+    padding: 15px;
+    text-align: center;
+    color:#FFFFFF;
+    font-size: x-large;
+    font-family: "Comic Sans MS", "Times New Roman", Times, serif;
+    width: 100%;
+}
+
+aside {
+    background-color: aliceblue;
+    width: 30%;
+    float: left;
+}
+
+main {
+    width: 70%;
+    float: right;
+}
+
+ul{
+    list-style-type: none;
+}
+
+/* Style for current-weater-display section */
+#current-weather-display {
+    margin : 20px;
+    border:1px solid #C0C0C0 ;
+    border-radius: 5px;
+
+}
+
+#current-weather-display h1{
+    margin :45px 0px 0px 45px;
+    float : left;
+}
+
+#current-weather-display img{
+    margin :0px;
+    float : left;
+}
+
+#current-weather-display ul{
+    clear:both;
+    margin: 45px
+}
+
+#current-weather-display ul li{
+    margin-bottom: 20px
+}
+
+/* style for forecast section */
+#forecast{
+    margin: 20px;
+}
+
+#forecast ul{
+    margin-top: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    
+}
+
+#forecast ul li {
+    background-color:cornflowerblue;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+}
