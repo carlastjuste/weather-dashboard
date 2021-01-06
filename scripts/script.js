@@ -1,3 +1,23 @@
+// var lis = document.getElementById("searchHistory").getElementsByTagName('li');
+// console.log(lis);
+
+// // Get the element, add a click listener...
+// document.getElementById("searchHistory").addEventListener("click", function(e) {
+// 	// e.target is the clicked element!
+// 	// If it was a list item
+// 	if(e.target && e.target.nodeName == "LI") {
+// 		// List item found!  Output the ID!
+// 		console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
+// 	}
+// });
+
+function onClickHandler(elem){
+  var apiKey = '4354bae4bc4f80de34b0ce15453d2200';
+  var cityName = elem.innerHTML;
+  getCityGeoLocation (cityName, apiKey);
+}
+
+
 
 // onClick function for weather search by city name 
 $("#searchWeatherBtn").on("click", function(event){
@@ -9,8 +29,6 @@ $("#searchWeatherBtn").on("click", function(event){
     console.log(cityName);
 
     var searchParm = getCityGeoLocation (cityName, apiKey);
-    //displayWeatherInfo(apiKey);
-
     var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"));
     console.log(previousCitySearch);
     console.log(previousCitySearch[0]);
@@ -61,10 +79,8 @@ $("#searchWeatherBtn").on("click", function(event){
         }
 
 
-               displayWeatherInfo(searchParm, apiKey);
-    
+        displayWeatherInfo(searchParm, apiKey); 
  })
-
 };
 
 function displayWeatherInfo(searchParm, apiKey){
@@ -145,12 +161,12 @@ function displayWeatherInfo(searchParm, apiKey){
 
     function displaySearchHistory (previousCitySearch) {
         //Parse any JSON previosly stored in the variable existingEntries
-        previousSearchHtml = "<a href='#'><ul>"
+        previousSearchHtml = "<ul id='searchHistory'>"
         for (i=0; i<previousCitySearch.length; i++){
-          previousSearchHtml +="<li>"+previousCitySearch[i].Name + "</li>";
+          previousSearchHtml +="<li><a href='#' onclick='onClickHandler(this)'>"+previousCitySearch[i].Name + "</a></li>";
         }
 
-        previousSearchHtml+= "</ul></a>";
+        previousSearchHtml+= "</ul>";
         console.log(previousSearchHtml);
         $("#previousSearch").html(previousSearchHtml);           
               
