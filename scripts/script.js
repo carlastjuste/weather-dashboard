@@ -11,6 +11,16 @@ $("#searchWeatherBtn").on("click", function(event){
     var searchParm = getCityGeoLocation (cityName, apiKey);
     //displayWeatherInfo(apiKey);
 
+    var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"));
+    console.log(previousCitySearch);
+    console.log(previousCitySearch[0]);
+    console.log(previousCitySearch[0].Name);
+
+    if (previousCitySearch !== null)
+    {
+      displaySearchHistory(previousCitySearch);
+    }
+
 })
 
  function getCityGeoLocation (cityName, apiKey) {
@@ -30,14 +40,15 @@ $("#searchWeatherBtn").on("click", function(event){
         var lon = response.coord.lon;
         var cityName = response.name;
         var searchParm = [cityName, lat, lon];
-        var searchCity = [{'Name' : cityName, 'lat': lat, 'lon': lon, 'Exec': 1}];
+        var searchElement = {'Name' : cityName, 'lat': lat, 'lon': lon, 'Exec': 1};
+        var searchCity = [searchElement];
 
         //Parse any JSON previosly stored in the variable existingEntries
-        var existingEntries = JSON.parse(localStorage.getItem("searchCity"));
-        console.log(existingEntries);
+        var SearchHistory = JSON.parse(localStorage.getItem("searchCity"));
+        console.log(SearchHistory);
         //console.log(existingEntries.name);
 
-        if(existingEntries == null) {
+        if(SearchHistory == null) {
             //existingEntries = [];
             localStorage.setItem('searchCity', JSON.stringify(searchCity));
 
@@ -45,8 +56,8 @@ $("#searchWeatherBtn").on("click", function(event){
         {   
 
             localStorage.setItem('searchCity', JSON.stringify(searchCity))
-            existingEntries.unshift(searchCity);
-            localStorage.setItem("searchCity", JSON.stringify(existingEntries) )
+            SearchHistory.unshift(searchElement);
+            localStorage.setItem("searchCity", JSON.stringify(SearchHistory) )
         }
 
 
@@ -127,9 +138,20 @@ function displayWeatherInfo(searchParm, apiKey){
           }
 
           $("#forecast").html(forecastHtml);
- 
-
 
       })
     
-    }
+    };
+
+    function displaySearchHistory (previousCitySearch) {
+        //Parse any JSON previosly stored in the variable existingEntries
+        previousSearchHtml = "<a href='#'><ul>"
+        for (i=0; i<previousCitySearch.length; i++){
+          previousSearchHtml +="<li>"+previousCitySearch[i].Name + "</li>";
+        }
+
+        previousSearchHtml+= "</ul></a>";
+        console.log(previousSearchHtml);
+        $("#previousSearch").html(previousSearchHtml);           
+              
+    };
