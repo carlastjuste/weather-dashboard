@@ -1,15 +1,4 @@
-// var lis = document.getElementById("searchHistory").getElementsByTagName('li');
-// console.log(lis);
 
-// // Get the element, add a click listener...
-// document.getElementById("searchHistory").addEventListener("click", function(e) {
-// 	// e.target is the clicked element!
-// 	// If it was a list item
-// 	if(e.target && e.target.nodeName == "LI") {
-// 		// List item found!  Output the ID!
-// 		console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
-// 	}
-// });
 
 function onClickHandler(elem){
   var apiKey = '4354bae4bc4f80de34b0ce15453d2200';
@@ -114,13 +103,25 @@ function displayWeatherInfo(searchParm, apiKey){
           var curDateMonth = curDate.getMonth() + 1 ;
           var currentDate = curDateMonth + "/" + curDate.getDate() + "/" + curDate.getFullYear();
 
-          //var CurrentDateUsF =  CurrentDate.toLocaleDateString("en-US");
+        //to Color the Uv index value
+          var uvIndexcolor = "";
+
+          if (currentUVI<5) {
+            uvIndexcolor = "green";
+          }else if (currentUVI>=7) {
+            uvIndexcolor = "red";
+          }else {
+            uvIndexcolor = "yellow";
+
+          }
+  
+         
 
           currentWeatherHtml = "<h1>" + cityName + " (" + currentDate + ")</h1><img src='"+ currentWeatherIconUrl + "' alt='" + currentWeatherIconDesc + "'>";
           currentWeatherHtml += "<ul><li>Temperature: " + currentTemperature + " &#176" + unitTemp +"</li>";
           currentWeatherHtml += "<li>Humidity: " + currentHumidity + "</li>";
           currentWeatherHtml += "<li>Wind Speed: " + currentWindSpeed + "</li>";
-          currentWeatherHtml += "<li>UV Index: "+ currentUVI + "</li></ul>";
+          currentWeatherHtml += "<li class='"+uvIndexcolor+"'>UV Index: <span> "+ currentUVI + "</span></li></ul>";
           $("#current-weather-display").html(currentWeatherHtml);
 
           var forecast = [];

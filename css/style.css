@@ -25,6 +25,11 @@ aside {
     float: left;
 }
 
+aside .searchBlock {
+    margin: 20px;
+
+}
+
 main {
     width: 70%;
     float: right;
@@ -34,11 +39,31 @@ ul{
     list-style-type: none;
 }
 
+/* Style for Uv index value */
+
+.yellow span{
+    background-color: yellow;
+
+}
+
+.green span {
+    background-color : lime;
+    padding: 0px 20px 0px 0px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.red span{
+    background-color: red;
+}
+
 /* Style for current-weater-display section */
 #current-weather-display {
     margin : 20px;
     border:1px solid #C0C0C0 ;
     border-radius: 5px;
+    
 
 }
 
@@ -79,4 +104,9 @@ ul{
     padding: 20px;
     border: 1px solid #c0c0c0;
     border-radius: 5px;
+}
+
+/* Style for search history */
+a {
+    
 }
