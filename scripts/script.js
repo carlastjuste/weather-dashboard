@@ -1,12 +1,23 @@
-var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"));
-    console.log(previousCitySearch);
-    console.log(previousCitySearch[0]);
-    console.log(previousCitySearch[0].Name);
+// Display last searched cities
+var apiKey = '4354bae4bc4f80de34b0ce15453d2200';
+var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"))
 
-    if (previousCitySearch !== null)
-    {
+if (previousCitySearch !== null){
       displaySearchHistory(previousCitySearch);
+      displayWeatherInfo(previousCitySearch[0].Name,previousCitySearch[0].lat, previousCitySearch[0].lon,apiKey);
+
     }
+
+
+function displaySearchHistory (previousCitySearch) {
+      previousSearchHtml = "<ul id='searchHistory'>"
+      for (i=0; i<previousCitySearch.length; i++){
+        previousSearchHtml +="<li><a href='#' onclick='onClickHandler(this)'>"+previousCitySearch[i].Name + "</a></li>";
+      }
+      previousSearchHtml+= "</ul>";
+      console.log(previousSearchHtml);
+      $("#previousSearch").html(previousSearchHtml);                     
+  };
 
 
 function onClickHandler(elem){
@@ -29,31 +40,28 @@ $("#searchWeatherBtn").on("click", function(event){
     
 })
 
+
  function getCityGeoLocation (cityName, apiKey) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid="+ apiKey;
-    //var lon;
-    //var lat;
     var searchParm = [];
-
     //call the openweather api to get the city geolocation
     $.ajax({
         url: queryURL,
         method: "GET"
       }).done(function(response) {
           console.log(response);
-        // get the longitute and latitude of the city
+    // get the longitute and latitude of the city
         var lat = response.coord.lat;
         var lon = response.coord.lon;
         var cityName = response.name;
-        var searchParm = [cityName, lat, lon];
         var searchElement = {'Name' : cityName, 'lat': lat, 'lon': lon, 'Exec': 1};
         var searchCity = [searchElement];
 
-        //Parse any JSON previosly stored in the variable existingEntries
+    //Parse any JSON previosly stored in the variable existingEntries
         var SearchHistory = JSON.parse(localStorage.getItem("searchCity"));
         console.log(SearchHistory);
-        //console.log(existingEntries.name);
-
+    
+    //console.log(existingEntries.name);
         if(SearchHistory == null) {
             //existingEntries = [];
             localStorage.setItem('searchCity', JSON.stringify(searchCity));
@@ -66,15 +74,12 @@ $("#searchWeatherBtn").on("click", function(event){
             localStorage.setItem("searchCity", JSON.stringify(SearchHistory) )
         }
 
-
-        displayWeatherInfo(searchParm, apiKey); 
+        
+        displayWeatherInfo(cityName, lat, lon, apiKey); 
  })
 };
 
-function displayWeatherInfo(searchParm, apiKey){
-    var cityName = searchParm[0];
-    var lat = searchParm[1];
-    var lon = searchParm[2];
+function displayWeatherInfo(cityName, lat, lon, apiKey){
     var units ="imperial";
     var unitWind = " MPH";
     var unitTemp = "F";
@@ -159,15 +164,4 @@ function displayWeatherInfo(searchParm, apiKey){
     
     };
 
-    function displaySearchHistory (previousCitySearch) {
-        //Parse any JSON previosly stored in the variable existingEntries
-        previousSearchHtml = "<ul id='searchHistory'>"
-        for (i=0; i<previousCitySearch.length; i++){
-          previousSearchHtml +="<li><a href='#' onclick='onClickHandler(this)'>"+previousCitySearch[i].Name + "</a></li>";
-        }
 
-        previousSearchHtml+= "</ul>";
-        console.log(previousSearchHtml);
-        $("#previousSearch").html(previousSearchHtml);           
-              
-    };

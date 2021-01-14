@@ -39,6 +39,19 @@ ul{
     list-style-type: none;
 }
 
+/* style for search history */
+#searchHistory {
+display: flex;
+flex-flow: column wrap;
+justify-content: center;
+}
+
+
+#searchHistory li {
+}
+
+
+
 /* Style for Uv index value */
 
 .yellow span{
