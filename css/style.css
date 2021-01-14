@@ -25,6 +25,7 @@ aside {
     float: left;
 }
 
+
 aside .searchBlock {
     margin: 20px;
 
@@ -38,18 +39,6 @@ main {
 ul{
     list-style-type: none;
 }
-
-/* style for search history */
-#searchHistory {
-display: flex;
-flex-flow: column wrap;
-justify-content: center;
-}
-
-
-#searchHistory li {
-}
-
 
 
 /* Style for Uv index value */
@@ -119,7 +108,24 @@ justify-content: center;
     border-radius: 5px;
 }
 
-/* Style for search history */
-a {
+/* style for search history */
+
+#searchHistory {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin-right: 30px;
+    }
     
+#searchHistory li {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #c0c0c0;
+    text-decoration: none;
+    background-color: whitesmoke;
+    color: #787878;
+}
+a{
+    text-decoration: none; 
+    color: #787878;
 }
