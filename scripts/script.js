@@ -2,6 +2,10 @@
 var apiKey = '4354bae4bc4f80de34b0ce15453d2200';
 var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"))
 
+if (previousCitySearch == null){
+  displayWeatherInfo("Charlotte",35.2271, -80.8431,apiKey);
+}
+
 if (previousCitySearch !== null){
       displaySearchHistory(previousCitySearch);
       displayWeatherInfo(previousCitySearch[0].Name,previousCitySearch[0].lat, previousCitySearch[0].lon,apiKey);
