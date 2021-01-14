@@ -1,3 +1,12 @@
+var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"));
+    console.log(previousCitySearch);
+    console.log(previousCitySearch[0]);
+    console.log(previousCitySearch[0].Name);
+
+    if (previousCitySearch !== null)
+    {
+      displaySearchHistory(previousCitySearch);
+    }
 
 
 function onClickHandler(elem){
@@ -16,18 +25,8 @@ $("#searchWeatherBtn").on("click", function(event){
     var cityName = $("#searchWeather").val().trim();
     var apiKey = '4354bae4bc4f80de34b0ce15453d2200';
     console.log(cityName);
-
-    var searchParm = getCityGeoLocation (cityName, apiKey);
-    var previousCitySearch = JSON.parse(localStorage.getItem("searchCity"));
-    console.log(previousCitySearch);
-    console.log(previousCitySearch[0]);
-    console.log(previousCitySearch[0].Name);
-
-    if (previousCitySearch !== null)
-    {
-      displaySearchHistory(previousCitySearch);
-    }
-
+    getCityGeoLocation (cityName, apiKey);
+    
 })
 
  function getCityGeoLocation (cityName, apiKey) {
