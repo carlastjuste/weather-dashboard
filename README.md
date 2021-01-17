@@ -8,10 +8,10 @@ The following image demonstrates the application functionality:
 
 ## Deployed link
 
-```
+
 [WeatherDashboard](https://carlastjuste.github.io/WeatherDashboard/)
 
-```
+
 
 ## Prerequisites
 This software can be used on :
@@ -23,10 +23,10 @@ This software can be used on :
 
 ## Author
 
-```
-* [Carla ST JUSTE](http://github.com/carlastjuste)
 
-```
+* [@carlastjuste](http://github.com/carlastjuste)
+
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
