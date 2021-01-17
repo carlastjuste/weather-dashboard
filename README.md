@@ -9,7 +9,7 @@ The following image demonstrates the application functionality:
 ## Deployed link
 
 ```
-https://carlastjuste.github.io/WeatherDashboard/
+[WeatherDashboard](https://carlastjuste.github.io/WeatherDashboard/)
 
 ```
 
