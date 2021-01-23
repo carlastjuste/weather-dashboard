@@ -9,7 +9,8 @@ The following image demonstrates the application functionality:
 ## Deployed link
 
 
-[WeatherDashboard](https://carlastjuste.github.io/WeatherDashboard/)
+[WeatherDashboard](https://carlastjuste.github.io/weather-dashboard/)
+
 
 
 
